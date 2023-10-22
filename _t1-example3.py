@@ -2,19 +2,14 @@
 k = 0
 
 for i in range(1000, 10000):
-    f = False
-    t1, t2, t3,t4 = map(int, str(i))
+    digits = list(map(int, str(i)))
     
-    for i in [t1,t2,t3,t4]:
-        if i%2==0:
-            f = True
-            break
-    if f == True:
+    if any(digit % 2 == 0 for digit in digits):
         continue
 
-    n1,n2 = t1+t2, t3+t4
-    calcs = sorted([n1,n2])
+    sums = sorted([digits[0] + digits[1], digits[2] + digits[3]])
 
-    if ''.join(map(str, calcs)) == '616':
+    if ''.join(map(str, sums)) == '616':
         k += 1
+
 print(k)
